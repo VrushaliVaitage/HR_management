@@ -1,0 +1,18 @@
+Course Objectives:
+In this project we will focus on the following objectives:
+
+
+•	Objective 1: Automate HR tasks to enhance efficiency.
+•	Objective 2: Ensure secure and accurate management of employee data.
+•	Objective 3: Provide a user-friendly interface for easy navigation.
+
+By the end of this project you will be able to learn :
+•	Web Development: Build a full-stack app using Django, with front-end and back-end integration.
+•	Database Management: Design databases and manage data using Django ORM.
+•	Security: Implement user authentication and role-based access.
+•	Project Management: version control, and documentation.
+•	Problem-Solving: Analyze requirements, debug, and test thoroughly.
+•	Real-World Applications: Understand business needs, improve communication, and work collaboratively.
+
+You will deploy the project on the Nimbus Platform using Heroku or render or any other tools / platforms
+
