@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Performance Reviews{% endblock %}
+
+{% block content %}
+<h1>Performance Reviews</h1>
+<a href="{% url 'performance_create' %}">Add Performance Review</a>
+<table>
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Review Date</th>
+            <th>Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for review in reviews %}
+        <tr>
+            <td>{{ review.employee.name }}</td>
+            <td>{{ review.review_date }}</td>
+            <td>{{ review.rating }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

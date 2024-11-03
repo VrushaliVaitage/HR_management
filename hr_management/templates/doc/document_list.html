@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Documents{% endblock %}
+
+{% block content %}
+<h1>Documents</h1>
+<a href="{% url 'document_upload' %}">Upload Document</a>
+<table>
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Document Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for document in documents %}
+        <tr>
+            <td>{{ document.employee.name }}</td>
+            <td>{{ document.document_name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

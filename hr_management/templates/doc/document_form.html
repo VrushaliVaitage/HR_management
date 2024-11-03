@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Upload Document{% endblock %}
+
+{% block content %}
+<h1>{% if document %}Edit Document: {{ document.name }}{% else %}Upload New Document{% endif %}</h1>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <label for="name">Document Name:</label>
+        <input type="text" name="name" id="name" value="{{ document.name|default:'' }}" required>
+    </div>
+    <div>
+        <label for="file">Upload File:</label>
+        <input type="file" name="file" id="file" {% if document %} accept=".pdf,.docx,.xlsx"{% endif %} required>
+    </div>
+    <button type="submit">{% if document %}Update Document{% else %}Upload Document{% endif %}</button>
+</form>
+
+<a href="{% url 'document_list' %}">Cancel</a>
+{% endblock %}

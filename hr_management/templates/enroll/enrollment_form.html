@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Enroll Employees in {{ training_program.name }}{% endblock %}
+
+{% block content %}
+<h1>Enroll Employees in {{ training_program.name }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Select Employees to Enroll</legend>
+        {{ form.as_p }}
+    </fieldset>
+    <button type="submit">Enroll Selected Employees</button>
+</form>
+<a href="{% url 'training_list' %}">Back to Training Programs</a>
+{% endblock %}

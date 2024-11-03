@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Training Programs{% endblock %}
+
+{% block content %}
+<h1>Training Programs</h1>
+<a href="{% url 'training_create' %}">Add New Training Program</a>
+<table>
+    <thead>
+        <tr>
+            <th>Program Name</th>
+            <th>Description</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for program in training_programs %}
+        <tr>
+            <td>{{ program.name }}</td>
+            <td>{{ program.description }}</td>
+            <td>{{ program.start_date }}</td>
+            <td>{{ program.end_date }}</td>
+            <td>
+                <a href="{% url 'training_update' program.id %}">Edit</a> |
+                <a href="{% url 'training_delete' program.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

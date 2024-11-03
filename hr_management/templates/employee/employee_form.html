@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+<h2>{{ form.instance.id|yesno:"Edit,Add" }} Employee</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}
+<head>
+    <title>Leave Form</title>
+</head>
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <h1>{% if form.instance.pk %}Edit{% else %}Apply for{% endif %} Leave</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{% url 'leave_list' %}">Back to Leave Requests</a>
+</body>
+
+{% endblock %}
