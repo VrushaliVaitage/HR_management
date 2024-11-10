@@ -10,6 +10,7 @@
         <tr>
             <th>Employee</th>
             <th>Review Date</th>
+            <th>feedback</th>
             <th>Rating</th>
         </tr>
     </thead>
@@ -18,6 +19,7 @@
         <tr>
             <td>{{ review.employee.name }}</td>
             <td>{{ review.review_date }}</td>
+            <td>{{ review.comments}}
             <td>{{ review.rating }}</td>
         </tr>
         {% endfor %}

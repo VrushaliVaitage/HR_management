@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+<h2>Delete Employee</h2>
+<p>Are you sure you want to delete {{ employee.name }}?</p>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm</button>
+</form>

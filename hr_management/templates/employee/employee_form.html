@@ -1,7 +1,49 @@
-{% extends 'base.html' %}
-<h2>{{ form.instance.id|yesno:"Edit,Add" }} Employee</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Save</button>
-</form>
+<!-- templates/employee/add_form.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>{% if form.instance.pk %}Update Employee{% else %}Add Employee{% endif %}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <!-- Name Field -->
+        <div class="form-group">
+            <label for="id_name">Name:</label>
+            {{ form.name }}
+        </div>
+
+        <!-- Designation Field -->
+        <div class="form-group">
+            <label for="id_designation">Designation:</label>
+            {{ form.designation }}
+        </div>
+
+        <!-- Department Field -->
+        <div class="form-group">
+            <label for="id_department">Department:</label>
+            {{ form.department }}
+        </div>
+
+        <!-- Date of Hire Field -->
+        <div class="form-group">
+            <label for="id_date_of_hire">Date of Hire:</label>
+            {{ form.date_of_hire }}
+        </div>
+
+        <!-- Contact Info Field -->
+        <div class="form-group">
+            <label for="id_contact_info">Contact Info:</label>
+            {{ form.contact_info }}
+        </div>
+        
+        <!-- Submit and Cancel Buttons -->
+        <button type="submit" class="btn btn-primary">
+            {% if form.instance.pk %}Update{% else %}Submit{% endif %}
+        </button>
+        <a href="{% url 'employee_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

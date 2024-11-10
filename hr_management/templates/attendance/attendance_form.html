@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h2>{% if form.instance.pk %}Update Attendance{% else %}Add Attendance{% endif %}</h2>
+   
+
+
+  <body>
+    <h1>{% if form.instance.pk %}Edit{% else %}Apply for{% endif %} Attendance</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <a href="{% url 'attendance_create' %}">Back to attendance</a>
+</body>
+{% endblock %}
