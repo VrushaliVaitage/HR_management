@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Enrollment List for {{ training_program.name }}{% endblock %}
+{% block title %}Enrollment List for {{ program.name }}{% endblock %}
 
 {% block content %}
-<h1>Enrollment List for {{ training_program.name }}</h1>
+<h1>Enrollment List for {{ program.name }}</h1>
 
 <table>
     <thead>
@@ -11,7 +11,6 @@
             <th>Employee Name</th>
             <th>Department</th>
             <th>Enrollment Date</th>
-            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -20,9 +19,7 @@
             <td>{{ enrollment.employee.name }}</td>
             <td>{{ enrollment.employee.department }}</td>
             <td>{{ enrollment.enrollment_date }}</td>
-            <td>
-                <a href="{% url 'enrollment_remove' enrollment.id %}">Remove</a>
-            </td>
+           
         </tr>
         {% endfor %}
     </tbody>

@@ -8,7 +8,7 @@
 {% block content %}
 
 <body>
-    <h1>{% if form.instance.pk %}Edit{% else %}Apply for{% endif %} Performance</h1>
+    <h1>{% if form.instance.pk %}Edit{% else %}Add {% endif %} Performance</h1>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}

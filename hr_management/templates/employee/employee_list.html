@@ -8,6 +8,7 @@
 
 {% block content %}
 <!-- <table class="table-primary"> -->
+    <h1>Employees List</h1>
 <table class="form-table">
 <ul>
     <thead>
@@ -21,7 +22,7 @@
     {% for employee in employees %}
     <br>
         <td>{{ employee.name }} </td>
-        <td><a href="{% url 'employee_update' employee.id %}">Edit</a> - <a href="{% url 'employee_delete' employee.id %}">Delete</a></tr>
+        <td><a href="{% url 'employee_update' employee.id %}">Edit</a></tr>
         <br>
     {% endfor %}
 </tr>

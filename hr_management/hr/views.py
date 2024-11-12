@@ -1,12 +1,15 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Employee, LeaveRequest, Attendance, PerformanceReview, TrainingProgram, Enrollment, Document
 from .forms import EmployeeForm, LeaveRequestForm, AttendanceForm, PerformanceReviewForm, TrainingProgramForm, EnrollmentForm, DocumentForm
+from django.contrib.auth.decorators import login_required
 
 # Employee Management
+@login_required(login_url='signin_url')
 def employee_list(request):
     employees = Employee.objects.all()
     return render(request, 'employee/employee_list.html', {'employees': employees})
 
+@login_required(login_url='signin_url')
 def employee_create(request):
     form = EmployeeForm(request.POST or None)
     if form.is_valid():
@@ -14,6 +17,7 @@ def employee_create(request):
         return redirect('employee_list')
     return render(request, 'employee/employee_form.html', {'form': form})
 
+@login_required(login_url='signin_url')
 def employee_update(request, pk):
     employee = get_object_or_404(Employee, pk=pk)
     form = EmployeeForm(request.POST or None, instance=employee)
@@ -22,6 +26,7 @@ def employee_update(request, pk):
         return redirect('employee_list')
     return render(request, 'employee/employee_form.html', {'form': form})
 
+@login_required(login_url='signin_url')
 def employee_delete(request, pk):
     employee = get_object_or_404(Employee, pk=pk)
     if request.method == 'POST':
@@ -31,6 +36,7 @@ def employee_delete(request, pk):
 
 
 # Leave Management Views
+@login_required(login_url='signin_url')
 
 def leave_list(request):
     leaves = LeaveRequest.objects.all()
@@ -42,6 +48,7 @@ def leave_create(request):
         form.save()
         return redirect('leave_list')
     return render(request, 'leave/leave_form.html', {'form': form})
+
 
 def leave_update(request, pk):
     leave = get_object_or_404(LeaveRequest, pk=pk)
@@ -59,7 +66,7 @@ def leave_delete(request, pk):
     return render(request, 'leave/leave_confirm_delete.html', {'leave': leave})
 
 # Attendance Tracking Views
-
+@login_required(login_url='signin_url')
 def attendance_list(request):
     attendance_records = Attendance.objects.all()
     return render(request, 'attendance/attendance_list.html', {'attendance_records': attendance_records})
@@ -72,7 +79,7 @@ def attendance_create(request):
     return render(request, 'attendance/attendance_form.html', {'form': form})
 
 # Performance Reviews Views
-
+@login_required(login_url='signin_url')
 def performance_list(request):
     reviews = PerformanceReview.objects.all()
     return render(request, 'performance/performance_list.html', {'reviews': reviews})
@@ -100,7 +107,7 @@ def performance_delete(request, pk):
     return render(request, 'performance/performance_confirm_delete.html', {'review': review})
 
 # Training Program Views
-
+@login_required(login_url='signin_url')
 def training_list(request):
     programs = TrainingProgram.objects.all()
     return render(request, 'enroll/training_list.html', {'programs': programs})
@@ -113,7 +120,7 @@ def training_create(request):
     return render(request, 'enroll/training_form.html', {'form': form})
 
 # Enrollment Views (for assigning training programs to employees)
-
+@login_required(login_url='signin_url')
 def enrollment_list(request):
     enrollments = Enrollment.objects.all()
     return render(request, 'enroll/enrollment_list.html', {'enrollments': enrollments})
@@ -126,7 +133,7 @@ def enrollment_create(request):
     return render(request, 'enroll/enrollment_form.html', {'form': form})
 
 # Document Management Views
-
+@login_required(login_url='signin_url')
 def document_list(request):
     documents = Document.objects.all()
     return render(request, 'doc/document_list.html', {'documents': documents})

@@ -1,12 +1,13 @@
 
 {% extends "base.html" %}
 
-{% block content %}
+{% block title %}
 <div class="container">
     <h2>{% if form.instance.pk %}Update Attendance{% else %}Add Attendance{% endif %}</h2>
    
+{% endblock %}
 
-
+    {% block content %}
   <body>
     <h1>{% if form.instance.pk %}Edit{% else %}Apply for{% endif %} Attendance</h1>
     <form method="post">

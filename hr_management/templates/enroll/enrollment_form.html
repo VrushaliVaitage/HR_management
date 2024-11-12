@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 
-{% block title %}Enroll Employees in {{ training_program.name }}{% endblock %}
+{% block title %}Enroll Employees in {{ program.name }}{% endblock %}
 
 {% block content %}
-<h1>Enroll Employees in {{ training_program.name }}</h1>
+<h1>Enroll Employees in {{ program.name }}</h1>
 <form method="post">
     {% csrf_token %}
     <fieldset>
