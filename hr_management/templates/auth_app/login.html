@@ -1,33 +1,54 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
 
-{% block title %}Login page{% endblock %}
+
+{% block title %}
+Login page
+
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+{% endblock %}
 
 {% block content %}
-    <h2>Login</h2>
+<header class="text-center"><h2>Login form</h2></header>
+    
     
     {% if form.errors %}
         <div class="alert alert-danger">
             <strong>Error:</strong> Please check the form and try again.
         </div>
     {% endif %}
-
-    <form method="post" action="{% url 'signin_url' %}">
+<section class="container my-2 bg-light w-50 text-dark p-2">    
+<form method="post" action="{% url 'signin_url' %}" class="row row-cols-lg-auto g-3 align-items-center">
         {% csrf_token %}
         {% load crispy_forms_tags %}
 
-        <label for ="u">Enter user name </label>
-        <input type="text" id="u" name ="un" placeholder="" class="form-control" autocomplete="off">
+    
+
+        
+            <div class="col-12">
+              <label class="visually-hidden" for="u">Username</label>
+              <div class="input-group">
+                <div class="input-group-text">@</div>
+                <input  class="form-control" type="text"  id="u" name ="un" placeholder="Username" autocomplete="on">
+              </div>
+            </div>
+
+
+
+        <label class="visually-hidden" for ="p">Enter password </label>
+        <input  class="form-control" type="password" id="p" name ="pw" placeholder="password"  autocomplete="off">
         <br><br>
 
-        <label for ="p">Enter password </label>
-        <input type="password" id="p" name ="pw" placeholder="" class="form-control" autocomplete="off">
-        <br><br>
-
-
+        <div class="button-container">
         <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    
     </form>
 
-    <p>Don't have an account? <a href="{% url 'signup_url' %}">Sign up here</a>.</p>
+    <p >Don't have an account? <a href="{% url 'signup_url' %}">Sign up here</a>.</p>
+</section>
 
 {% endblock %}

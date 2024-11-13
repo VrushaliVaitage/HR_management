@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +13,9 @@
 
 
 <body>
-    <h1>HR Management System</h1>
+  <header class="text-center"> <h1>HR Management System</h1></header>
+
+   
     <nav class="navbar navbar-expand-lg navbar-dark bg-info">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +42,7 @@
               {% else %}
               <a href="{% url 'signin_url' %}" class="text-dark" style="padding-right: 600px;">login</a><br><br>
               
-              <a href="{% url 'signup_url' %}" class="text-dark" >sign up</a>
+              <a href="{% url 'signup_url' %}" class="text-dark" style="padding-left: 600px;">sign up</a>
               {% endif %}
 
 
